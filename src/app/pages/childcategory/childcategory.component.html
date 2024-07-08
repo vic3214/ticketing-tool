@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header bg-success">Lista de Categorias Hijas</div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Número</th>
+                  <th>Categoría Padre</th>
+                  <th>Categoría Hija</th>
+                  <th class="text-center">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (childCategory of childCategoryList; track $index) {
+                <tr>
+                  <td>{{ $index + 1 }}</td>
+                  <td>{{ childCategory.parentCategoryName }}</td>
+                  <td>{{ childCategory.categoryName }}</td>
+                  <td class="text-center">
+                    <button
+                      class="btn btn-primary"
+                      (click)="onEdit(childCategory)"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      class="btn btn-danger mx-2"
+                      (click)="onDelete(childCategory.childCategoryId)"
+                    >
+                      Borrar
+                    </button>
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-success">Nueva Categoría</div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <label for="">Nombre de la Categoría</label>
+            <input
+              [(ngModel)]="newChildCategory.categoryName"
+              type="text"
+              class="form-control"
+            />
+          </div>
+
+          <div class="col-12">
+            <label for="">Categoría</label>
+            <select
+              [(ngModel)]="newChildCategory.parentCategoryId"
+              class="form-select"
+            >
+              <option value="">Selecciona una Categoría</option>
+              @for (parentCategory of parentCategoryList; track $index) {
+              <option [value]="parentCategory.categoryId">
+                {{ parentCategory.categoryName }}
+              </option>
+              }
+            </select>
+          </div>
+        </div>
+        <div class="row pt-3">
+          <div class="col-6 text-center">
+            <button class="btn btn-secondary">Resetear</button>
+          </div>
+
+          <div class="col-6 text-center">
+            @if (this.newChildCategory.childCategoryId==0) {
+            <button class="btn btn-success" (click)="saveChildCategory()">
+              Guardar Categoría
+            </button>
+            }@else {
+            <button class="btn btn-warning" (click)="updateChildCategory()">
+              Actualizar Categoría
+            </button>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
