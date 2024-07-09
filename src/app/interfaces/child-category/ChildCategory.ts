@@ -17,9 +17,9 @@ export class ChildCategory implements IChildCategory {
     parentCategoryName?: string,
     parentCategoryId?: number
   ) {
-    this.childCategoryId = childCategoryId ? childCategoryId : 0;
-    this.categoryName = categoryName ? categoryName : '';
-    this.parentCategoryName = parentCategoryName ? parentCategoryName : '';
-    this.parentCategoryId = parentCategoryId ? parentCategoryId : 0;
+    this.childCategoryId = childCategoryId ?? 0;
+    this.categoryName = categoryName ?? '';
+    this.parentCategoryName = parentCategoryName ?? '';
+    this.parentCategoryId = parentCategoryId ?? 0;
   }
 }

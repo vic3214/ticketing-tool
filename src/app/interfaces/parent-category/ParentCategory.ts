@@ -10,8 +10,8 @@ export class ParentCategory implements IParentCategory {
   deptId: number;
 
   constructor(categoryId?: number, categoryName?: string, deptId?: number) {
-    this.categoryId = categoryId ? categoryId : 0;
-    this.categoryName = categoryName ? categoryName : '';
-    this.deptId = deptId ? deptId : 0;
+    this.categoryId = categoryId ?? 0;
+    this.categoryName = categoryName ?? '';
+    this.deptId = deptId ?? 0;
   }
 }

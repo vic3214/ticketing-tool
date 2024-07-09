@@ -1,5 +1,6 @@
 import { CommonResponse } from '../CommonResponse';
+import { Employee } from './Employee';
 
 export interface EmployeeResponse extends CommonResponse {
-  data: string;
+  data: Employee[];
 }

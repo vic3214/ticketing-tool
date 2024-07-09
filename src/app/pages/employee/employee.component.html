@@ -1,1 +1,184 @@
-<p>employee works!</p>
+<div class="row">
+  @if (!isNewView) {
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header bg-success">
+        <div class="row">
+          <div class="col-6">Lista de Empleados</div>
+          <div class="col-6 button-alignment">
+            <button class="btn btn-warning" (click)="isNewView = !isNewView">
+              Añadir nuevo
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Número</th>
+                  <th>Nombre</th>
+                  <th>Departamento</th>
+                  <th>Número de contacto</th>
+                  <th>Email</th>
+                  <th>Rol</th>
+                  <th class="text-center">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (employee of employeesList; track $index) {
+                <tr>
+                  <td>{{ $index + 1 }}</td>
+                  <td>{{ employee.employeeName }}</td>
+                  <td>{{ employee.deptName }}</td>
+                  <td>{{ employee.contactNo }}</td>
+                  <td>{{ employee.emailId }}</td>
+                  <td>{{ employee.role }}</td>
+                  <td class="text-center">
+                    <button class="btn btn-primary" (click)="onEdit(employee)">
+                      Editar
+                    </button>
+                    <button
+                      class="btn btn-danger mx-2"
+                      (click)="onDelete(employee.employeeId)"
+                    >
+                      Borrar
+                    </button>
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }@else{
+
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header bg-success">
+        <div class="row">
+          <div class="col-6">Nuevo Empleado</div>
+          <div class="col-6">
+            <button class="btn btn-warning" (click)="isNewView = !isNewView">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <label for="">Nombre del Empleado</label>
+            <input
+              [(ngModel)]="newEmployee.employeeName"
+              type="text"
+              class="form-control"
+            />
+          </div>
+
+          <div class="col-6">
+            <label for="">Número de Contacto</label>
+            <input
+              [(ngModel)]="newEmployee.contactNo"
+              type="text"
+              class="form-control"
+            />
+          </div>
+
+          <div class="col-6">
+            <label for="">Email</label>
+            <input
+              [(ngModel)]="newEmployee.emailId"
+              type="text"
+              class="form-control"
+            />
+          </div>
+
+          <div class="col-6">
+            <label for="">Departamento</label>
+            <select [(ngModel)]="newEmployee.deptId" class="form-select">
+              <option value="">Selecciona un Departamento</option>
+              @for (department of departmentList; track $index) {
+              <option [value]="department.deptId">
+                {{ department.deptName }}
+              </option>
+              }
+            </select>
+          </div>
+
+          <div class="col-6">
+            <label for="">Rol</label>
+
+            <select [(ngModel)]="newEmployee.role" class="form-select">
+              <option value="">Selecciona un Rol</option>
+              @for (role of roleList; track $index) {
+              <option [value]="role.name">
+                {{ role.name }}
+              </option>
+              }
+            </select>
+          </div>
+
+          <div class="col-6">
+            <label for="">Sexo</label>
+            <div class="input-alignment">
+              <div>
+                <input
+                  id="male"
+                  [(ngModel)]="newEmployee.gender"
+                  value="Hombre"
+                  name="gender"
+                  type="radio"
+                />
+                <label for="male">Hombre</label>
+              </div>
+
+              <div>
+                <input
+                  id="famale"
+                  [(ngModel)]="newEmployee.gender"
+                  value="Mujer"
+                  name="gender"
+                  type="radio"
+                />
+                <label for="famale">Mujer</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <label for="">Contraseña</label>
+            <input
+              [(ngModel)]="newEmployee.password"
+              type="text"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="row pt-3">
+          <div class="col-6 text-center">
+            <button class="btn btn-secondary">Resetear</button>
+          </div>
+
+          <div class="col-6 text-center">
+            @if (this.newEmployee.employeeId==0) {
+            <button class="btn btn-success" (click)="saveEmployee()">
+              Guardar Empleado
+            </button>
+            }@else {
+            <button class="btn btn-warning" (click)="updateEmployee()">
+              Actualizar Empleado
+            </button>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>

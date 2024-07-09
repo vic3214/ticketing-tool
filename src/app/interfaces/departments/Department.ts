@@ -10,8 +10,8 @@ export class Department implements IDepartment {
   createdDate: Date;
 
   constructor(deptId?: number, deptName?: string) {
-    this.deptId = deptId ? deptId : 0;
-    this.deptName = deptName ? deptName : '';
+    this.deptId = deptId ?? 0;
+    this.deptName = deptName ?? '';
     this.createdDate = new Date();
   }
 

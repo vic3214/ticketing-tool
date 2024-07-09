@@ -65,7 +65,7 @@ export class ChildcategoryComponent {
           alert('Categoría actualizada con éxito');
           this.getAllChildCategory();
         } else {
-          alert('Error al crear la categoría: ' + res.message);
+          alert('Error al actualizar la categoría: ' + res.message);
         }
       });
   }

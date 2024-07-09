@@ -2,8 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { ChildCategory } from '../interfaces/child-category/ChildCategory';
 import { ChildCategoryResponse } from '../interfaces/child-category/ChildCategoryResponse';
-import { Department } from '../interfaces/departments/Department';
-import { DepartmentResponse } from '../interfaces/departments/DepartmentResponse';
 import { LoginRequest } from '../interfaces/login/LoginRequest';
 import { LoginResponse } from '../interfaces/login/LoginResponse';
 import { ParentCategory } from '../interfaces/parent-category/ParentCategory';
@@ -19,30 +17,6 @@ export class MasterService {
 
   login(obj: LoginRequest) {
     return this.http.post<LoginResponse>(this.apiUrl + 'Login', obj);
-  }
-
-  getAllDepartments() {
-    return this.http.get<DepartmentResponse>(`${this.apiUrl}GetDepartments`);
-  }
-
-  createDepartment(department: Department) {
-    return this.http.post<DepartmentResponse>(
-      `${this.apiUrl}CreateDepartment`,
-      department
-    );
-  }
-
-  updateDepartment(department: Department) {
-    return this.http.put<DepartmentResponse>(
-      `${this.apiUrl}UpdateDepartment`,
-      department
-    );
-  }
-
-  deleteDepartment(id: number) {
-    return this.http.delete<DepartmentResponse>(
-      `${this.apiUrl}DeleteDepartment?id=${id}`
-    );
   }
 
   getAllParentsCategory() {

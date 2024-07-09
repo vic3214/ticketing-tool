@@ -4,6 +4,7 @@ import { Department } from '../../interfaces/departments/Department';
 import { DepartmentResponse } from '../../interfaces/departments/DepartmentResponse';
 import { ParentCategory } from '../../interfaces/parent-category/ParentCategory';
 import { ParentCategoryResponse } from '../../interfaces/parent-category/ParentCategoryResponse';
+import { DepartmentService } from '../../services/department.service';
 import { MasterService } from '../../services/master.service';
 
 @Component({
@@ -15,6 +16,7 @@ import { MasterService } from '../../services/master.service';
 })
 export class ParentcategoryComponent {
   private masterService = inject(MasterService);
+  private departmentService = inject(DepartmentService);
   parentCategoryList: ParentCategory[] = [];
   newParentCategory: ParentCategory = new ParentCategory();
   gridList: Department[] = [];
@@ -26,7 +28,7 @@ export class ParentcategoryComponent {
   }
 
   getAllDepartments() {
-    this.masterService
+    this.departmentService
       .getAllDepartments()
       .subscribe((res: DepartmentResponse) => {
         this.departmentList = res.data;
