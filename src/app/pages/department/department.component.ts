@@ -1,9 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Department } from '../../interfaces/departments/Department';
-import { DepartmentResponse } from '../../interfaces/departments/DepartmentResponse';
-import { DepartmentService } from '../../services/department.service';
+import { Department } from '../../core/interfaces/department/Department';
+import { DepartmentResponse } from '../../core/interfaces/department/DepartmentResponse';
+import { DepartmentService } from '../../core/services/department.service';
 
 @Component({
   selector: 'app-department',

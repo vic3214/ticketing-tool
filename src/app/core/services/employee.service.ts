@@ -3,8 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { Employee } from '../interfaces/employee/Employee';
 import { EmployeeResponse } from '../interfaces/employee/EmployeeResponse';
-import { Roles } from '../interfaces/roles/Roles';
-import { RolesResponse } from '../interfaces/roles/RolesResponse';
+import { Role } from '../interfaces/role/Role';
+import { RoleResponse } from '../interfaces/role/RoleResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -38,9 +38,9 @@ export class EmployeeService {
   }
 
   getAllRoles() {
-    return this.http.get<RolesResponse>(`${this.apiUrl}GetAllRoles`).pipe(
-      map((res: RolesResponse) => {
-        return res.data.map((role: string) => new Roles(role));
+    return this.http.get<RoleResponse>(`${this.apiUrl}GetAllRoles`).pipe(
+      map((res: RoleResponse) => {
+        return res.data.map((role: string) => new Role(role));
       })
     );
   }

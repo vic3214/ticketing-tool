@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { catchError, forkJoin, Observable, of, retry } from 'rxjs';
-import { Department } from '../../interfaces/departments/Department';
-import { DepartmentResponse } from '../../interfaces/departments/DepartmentResponse';
-import { Employee } from '../../interfaces/employee/Employee';
-import { EmployeeResponse } from '../../interfaces/employee/EmployeeResponse';
-import { Roles } from '../../interfaces/roles/Roles';
-import { DepartmentService } from '../../services/department.service';
-import { EmployeeService } from '../../services/employee.service';
+import { Department } from '../../core/interfaces/department/Department';
+import { DepartmentResponse } from '../../core/interfaces/department/DepartmentResponse';
+import { Employee } from '../../core/interfaces/employee/Employee';
+import { EmployeeResponse } from '../../core/interfaces/employee/EmployeeResponse';
+import { Role } from '../../core/interfaces/role/Role';
+import { DepartmentService } from '../../core/services/department.service';
+import { EmployeeService } from '../../core/services/employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -22,7 +22,7 @@ export class EmployeeComponent {
   newEmployee: Employee = new Employee();
   departmentList: Department[] = [];
   employeesList: Employee[] = [];
-  roleList: Roles[] = [];
+  roleList: Role[] = [];
   isNewView: boolean = false;
 
   ngOnInit(): void {
@@ -31,7 +31,7 @@ export class EmployeeComponent {
         .getAllRoles()
         .pipe(
           retry(1),
-          catchError(this.handleError<Roles[]>('obtención de roles'))
+          catchError(this.handleError<Role[]>('obtención de roles'))
         ),
       employees: this.employeeService
         .getAllEmployees()

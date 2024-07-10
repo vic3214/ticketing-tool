@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ChildCategory } from '../../interfaces/child-category/ChildCategory';
-import { ChildCategoryResponse } from '../../interfaces/child-category/ChildCategoryResponse';
-import { ParentCategory } from '../../interfaces/parent-category/ParentCategory';
-import { ParentCategoryResponse } from '../../interfaces/parent-category/ParentCategoryResponse';
-import { MasterService } from '../../services/master.service';
+import { catchError, forkJoin, Observable, of, retry } from 'rxjs';
+import { ChildCategory } from '../../core/interfaces/child-category/ChildCategory';
+import { ChildCategoryResponse } from '../../core/interfaces/child-category/ChildCategoryResponse';
+import { ParentCategory } from '../../core/interfaces/parent-category/ParentCategory';
+import { ParentCategoryResponse } from '../../core/interfaces/parent-category/ParentCategoryResponse';
+import { ChildCategoryService } from '../../core/services/child-category.service';
+import { ParentCategoryService } from '../../core/services/parent-category.service';
 
 @Component({
   selector: 'app-childcategory',
@@ -14,34 +16,54 @@ import { MasterService } from '../../services/master.service';
   styleUrl: './childcategory.component.css',
 })
 export class ChildcategoryComponent {
-  private masterService = inject(MasterService);
+  private parentCategoryService = inject(ParentCategoryService);
+  private childCategoryService = inject(ChildCategoryService);
   newChildCategory: ChildCategory = new ChildCategory();
   childCategoryList: ChildCategory[] = [];
   parentCategoryList: ParentCategory[] = [];
 
   ngOnInit(): void {
-    this.getAllParentsCategory();
-    this.getAllChildCategory();
+    forkJoin({
+      parentCategorys: this.parentCategoryService
+        .getAllParentsCategory()
+        .pipe(
+          retry(1),
+          catchError(
+            this.handleError<ParentCategoryResponse>('obtención de categorías')
+          )
+        ),
+      childCategorys: this.childCategoryService
+        .getAllChildCategory()
+        .pipe(
+          retry(1),
+          catchError(
+            this.handleError<ChildCategoryResponse>(
+              'obtención de subcategorías'
+            )
+          )
+        ),
+    }).subscribe(({ parentCategorys, childCategorys }) => {
+      this.parentCategoryList = parentCategorys.data;
+      this.childCategoryList = childCategorys.data;
+    });
   }
 
+  handleError<T>(operation: string, result?: T) {
+    return (error: any): Observable<T> => {
+      alert(`Falló la ${operation}: ${error.message}. Recarga la página.`);
+      return of(result as T);
+    };
+  }
   getAllChildCategory() {
-    this.masterService
+    this.childCategoryService
       .getAllChildCategory()
       .subscribe((res: ChildCategoryResponse) => {
         this.childCategoryList = res.data;
       });
   }
 
-  getAllParentsCategory() {
-    this.masterService
-      .getAllParentsCategory()
-      .subscribe((res: ParentCategoryResponse) => {
-        this.parentCategoryList = res.data;
-      });
-  }
-
   saveChildCategory() {
-    this.masterService
+    this.childCategoryService
       .createChildCategory(this.newChildCategory)
       .subscribe((res: ChildCategoryResponse) => {
         if (res.result) {
@@ -58,7 +80,7 @@ export class ChildcategoryComponent {
   }
 
   updateChildCategory() {
-    this.masterService
+    this.childCategoryService
       .updateChildCategory(this.newChildCategory)
       .subscribe((res: ChildCategoryResponse) => {
         if (res.result) {
@@ -73,7 +95,7 @@ export class ChildcategoryComponent {
   onDelete(categoryId: number) {
     const isDelete = confirm('¿Estás seguro de eliminar la categoría?');
     if (!isDelete) return;
-    this.masterService
+    this.childCategoryService
       .deleteChildCategory(categoryId)
       .subscribe((res: ChildCategoryResponse) => {
         if (res.result) {

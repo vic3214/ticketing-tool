@@ -1,1 +1,96 @@
-<p>ticket-list works!</p>
+<div class="row mt-2 mb-2">
+  <div class="col-12 text-center">
+    <div class="btn-group">
+      <button
+        type="button"
+        (click)="changeMode(TicketListMode.MisTickets)"
+        [class]="
+          mode == TicketListMode.MisTickets
+            ? 'btn btn-success'
+            : 'btn btn-primary'
+        "
+      >
+        Mis Tickets
+      </button>
+      <button
+        type="button"
+        (click)="changeMode(TicketListMode.TicketsAsignados)"
+        [class]="
+          mode == TicketListMode.TicketsAsignados
+            ? 'btn btn-success'
+            : 'btn btn-primary'
+        "
+      >
+        Tickets Asignados
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    @if(mode===TicketListMode.MisTickets){
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Número de Ticket</th>
+          <th>Departamento</th>
+          <th>Creado por</th>
+          <th>Número de contacto</th>
+          <th>Fecha de Creación</th>
+          <th>Estado</th>
+          <th>Asignado a</th>
+          <th>Categoría</th>
+          <th>SubCategoría</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (ticket of ticketLoggedUserInfoList; track $index) {
+        <tr>
+          <td>{{ ticket.ticketNo }}</td>
+          <td>{{ ticket.deptName }}</td>
+          <td>{{ ticket.createdByEmployee }}</td>
+          <td>{{ ticket.contactNo }}</td>
+          <td>{{ ticket.createdDate }}</td>
+          <td>{{ ticket.state }}</td>
+          <td>{{ ticket.assignedToEmployee }}</td>
+          <td>{{ ticket.childCategory }}</td>
+          <td>{{ ticket.parentCategory }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }@else{
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Número de Ticket</th>
+          <th>Departamento</th>
+          <th>Creado por</th>
+          <th>Número de contacto</th>
+          <th>Fecha de Creación</th>
+          <th>Estado</th>
+          <th>Asignado a</th>
+          <th>Categoría</th>
+          <th>SubCategoría</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (ticket of ticketAssignedList; track $index) {
+        <tr>
+          <td>{{ ticket.ticketNo }}</td>
+          <td>{{ ticket.deptName }}</td>
+          <td>{{ ticket.createdByEmployee }}</td>
+          <td>{{ ticket.contactNo }}</td>
+          <td>{{ ticket.createdDate }}</td>
+          <td>{{ ticket.state }}</td>
+          <td>{{ ticket.assignedToEmployee }}</td>
+          <td>{{ ticket.parentCategoryName }}</td>
+          <td>{{ ticket.childCategoryName }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+  </div>
+</div>

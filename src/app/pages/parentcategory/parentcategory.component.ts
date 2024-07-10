@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Department } from '../../interfaces/departments/Department';
-import { DepartmentResponse } from '../../interfaces/departments/DepartmentResponse';
-import { ParentCategory } from '../../interfaces/parent-category/ParentCategory';
-import { ParentCategoryResponse } from '../../interfaces/parent-category/ParentCategoryResponse';
-import { DepartmentService } from '../../services/department.service';
-import { MasterService } from '../../services/master.service';
+import { Department } from '../../core/interfaces/department/Department';
+import { DepartmentResponse } from '../../core/interfaces/department/DepartmentResponse';
+import { ParentCategory } from '../../core/interfaces/parent-category/ParentCategory';
+import { ParentCategoryResponse } from '../../core/interfaces/parent-category/ParentCategoryResponse';
+import { DepartmentService } from '../../core/services/department.service';
+import { ParentCategoryService } from '../../core/services/parent-category.service';
 
 @Component({
   selector: 'app-parentcategory',
@@ -15,7 +15,7 @@ import { MasterService } from '../../services/master.service';
   styleUrl: './parentcategory.component.css',
 })
 export class ParentcategoryComponent {
-  private masterService = inject(MasterService);
+  private parentCategoryService = inject(ParentCategoryService);
   private departmentService = inject(DepartmentService);
   parentCategoryList: ParentCategory[] = [];
   newParentCategory: ParentCategory = new ParentCategory();
@@ -36,7 +36,7 @@ export class ParentcategoryComponent {
   }
 
   getAllParentsCategory() {
-    this.masterService
+    this.parentCategoryService
       .getAllParentsCategory()
       .subscribe((res: ParentCategoryResponse) => {
         this.parentCategoryList = res.data;
@@ -45,7 +45,7 @@ export class ParentcategoryComponent {
 
   saveParentCategory() {
     console.log(this.newParentCategory);
-    this.masterService
+    this.parentCategoryService
       .createParentCategory(this.newParentCategory)
       .subscribe((res: ParentCategoryResponse) => {
         if (res.result) {
@@ -62,7 +62,7 @@ export class ParentcategoryComponent {
   }
 
   updateParentCategory() {
-    this.masterService
+    this.parentCategoryService
       .updateParentCategory(this.newParentCategory)
       .subscribe((res: ParentCategoryResponse) => {
         if (res.result) {
@@ -77,7 +77,7 @@ export class ParentcategoryComponent {
   onDelete(departmentId: number) {
     const isDelete = confirm('¿Estás seguro de eliminar la categoría?');
     if (!isDelete) return;
-    this.masterService
+    this.parentCategoryService
       .deleteParentCategory(departmentId)
       .subscribe((res: ParentCategoryResponse) => {
         if (res.result) {

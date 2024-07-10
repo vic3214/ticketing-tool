@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Department } from '../interfaces/departments/Department';
-import { DepartmentResponse } from '../interfaces/departments/DepartmentResponse';
+import { Department } from '../interfaces/department/Department';
+import { DepartmentResponse } from '../interfaces/department/DepartmentResponse';
 
 @Injectable({
   providedIn: 'root',

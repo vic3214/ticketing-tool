@@ -2,14 +2,14 @@ export interface IChildCategory {
   childCategoryId: number;
   categoryName: string;
   parentCategoryName: string;
-  parentCategoryId: number;
+  parentCategoryId?: number;
 }
 
 export class ChildCategory implements IChildCategory {
   childCategoryId: number;
   categoryName: string;
   parentCategoryName: string;
-  parentCategoryId: number;
+  parentCategoryId?: number;
 
   constructor(
     childCategoryId?: number,

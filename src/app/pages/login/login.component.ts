@@ -2,9 +2,9 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { LoginRequest } from '../../interfaces/login/LoginRequest';
-import { LoginResponse } from '../../interfaces/login/LoginResponse';
-import { MasterService } from '../../services/master.service';
+import { LoginRequest } from '../../core/interfaces/login/LoginRequest';
+import { LoginResponse } from '../../core/interfaces/login/LoginResponse';
+import { MasterService } from '../../core/services/master.service';
 
 @Component({
   selector: 'app-login',

@@ -1,8 +1,8 @@
-export interface IRoles {
+export interface IRole {
   name: string;
 }
 
-export class Roles implements IRoles {
+export class Role implements IRole {
   name: string;
   constructor(name?: string) {
     this.name = name ?? '';
