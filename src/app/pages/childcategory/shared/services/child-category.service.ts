@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { ChildCategory } from '../interfaces/child-category/ChildCategory';
-import { ChildCategoryResponse } from '../interfaces/child-category/ChildCategoryResponse';
+import { ChildCategory } from '../../../../core/interfaces/child-category/ChildCategory';
+import { ChildCategoryResponse } from '../../../../core/interfaces/child-category/ChildCategoryResponse';
 
 @Injectable({
   providedIn: 'root',

@@ -3,7 +3,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Department } from '../../core/interfaces/department/Department';
 import { DepartmentResponse } from '../../core/interfaces/department/DepartmentResponse';
-import { DepartmentService } from '../../core/services/department.service';
+import { DepartmentService } from './shared/services/department.service';
 
 @Component({
   selector: 'app-department',

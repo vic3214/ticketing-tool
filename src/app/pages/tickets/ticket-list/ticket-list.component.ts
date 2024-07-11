@@ -1,13 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { TicketListMode } from '../../core/enums/TicketListMode.enum';
-import { TicketState } from '../../core/enums/TicketState.enum';
-import { Employee } from '../../core/interfaces/employee/Employee';
+import { TicketListMode } from '../../../core/enums/TicketListMode.enum';
+import { TicketState } from '../../../core/enums/TicketState.enum';
+import { Employee } from '../../../core/interfaces/employee/Employee';
 import {
   TicketAssignedInfo,
   TicketLoggedUserInfo,
-} from '../../core/interfaces/ticketInfo.ts/TicketInfo';
-import { TicketService } from '../../core/services/ticket.service';
+} from '../../../core/interfaces/ticketInfo.ts/TicketInfo';
+import { TicketService } from '../shared/services/ticket.service';
 
 @Component({
   selector: 'app-ticket-list',

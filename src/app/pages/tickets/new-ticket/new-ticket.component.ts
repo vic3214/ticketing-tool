@@ -2,18 +2,18 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { catchError, forkJoin, Observable, of, retry } from 'rxjs';
-import { ChildCategory } from '../../core/interfaces/child-category/ChildCategory';
-import { ChildCategoryResponse } from '../../core/interfaces/child-category/ChildCategoryResponse';
-import { Department } from '../../core/interfaces/department/Department';
-import { DepartmentResponse } from '../../core/interfaces/department/DepartmentResponse';
-import { Employee } from '../../core/interfaces/employee/Employee';
-import { ParentCategory } from '../../core/interfaces/parent-category/ParentCategory';
-import { ParentCategoryResponse } from '../../core/interfaces/parent-category/ParentCategoryResponse';
-import { Ticket } from '../../core/interfaces/ticket/Ticket';
-import { ChildCategoryService } from '../../core/services/child-category.service';
-import { DepartmentService } from '../../core/services/department.service';
-import { ParentCategoryService } from '../../core/services/parent-category.service';
-import { TicketService } from '../../core/services/ticket.service';
+import { ChildCategory } from '../../../core/interfaces/child-category/ChildCategory';
+import { ChildCategoryResponse } from '../../../core/interfaces/child-category/ChildCategoryResponse';
+import { Department } from '../../../core/interfaces/department/Department';
+import { DepartmentResponse } from '../../../core/interfaces/department/DepartmentResponse';
+import { Employee } from '../../../core/interfaces/employee/Employee';
+import { ParentCategory } from '../../../core/interfaces/parent-category/ParentCategory';
+import { ParentCategoryResponse } from '../../../core/interfaces/parent-category/ParentCategoryResponse';
+import { Ticket } from '../../../core/interfaces/ticket/Ticket';
+import { ChildCategoryService } from '../../childcategory/shared/services/child-category.service';
+import { DepartmentService } from '../../department/shared/services/department.service';
+import { ParentCategoryService } from '../../parentcategory/shared/services/parent-category.service';
+import { TicketService } from '../shared/services/ticket.service';
 
 @Component({
   selector: 'app-new-ticket',

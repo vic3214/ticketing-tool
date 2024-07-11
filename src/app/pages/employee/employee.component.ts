@@ -6,8 +6,8 @@ import { DepartmentResponse } from '../../core/interfaces/department/DepartmentR
 import { Employee } from '../../core/interfaces/employee/Employee';
 import { EmployeeResponse } from '../../core/interfaces/employee/EmployeeResponse';
 import { Role } from '../../core/interfaces/role/Role';
-import { DepartmentService } from '../../core/services/department.service';
-import { EmployeeService } from '../../core/services/employee.service';
+import { DepartmentService } from '../department/shared/services/department.service';
+import { EmployeeService } from './shared/services/employee.service';
 
 @Component({
   selector: 'app-employee',

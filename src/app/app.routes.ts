@@ -5,9 +5,9 @@ import { DepartmentComponent } from './pages/department/department.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { LoginComponent } from './pages/login/login.component';
-import { NewTicketComponent } from './pages/new-ticket/new-ticket.component';
 import { ParentcategoryComponent } from './pages/parentcategory/parentcategory.component';
-import { TicketListComponent } from './pages/ticket-list/ticket-list.component';
+import { NewTicketComponent } from './pages/tickets/new-ticket/new-ticket.component';
+import { TicketListComponent } from './pages/tickets/ticket-list/ticket-list.component';
 
 export const routes: Routes = [
   {

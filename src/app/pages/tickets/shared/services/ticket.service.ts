@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { TicektActionResponse } from '../interfaces/ticket-action/TicketActionResponse';
-import { Ticket } from '../interfaces/ticket/Ticket';
-import { TicketResponse } from '../interfaces/ticket/TicketResponse';
+import { TicektActionResponse } from '../../../../core/interfaces/ticket-action/TicketActionResponse';
+import { Ticket } from '../../../../core/interfaces/ticket/Ticket';
+import { TicketResponse } from '../../../../core/interfaces/ticket/TicketResponse';
 import {
   TicketAssignedInfoResponse,
   TicketLoggedUserInfoResponse,
-} from '../interfaces/ticketInfo.ts/TicketInfoResponse';
+} from '../../../../core/interfaces/ticketInfo.ts/TicketInfoResponse';
 
 @Injectable({
   providedIn: 'root',

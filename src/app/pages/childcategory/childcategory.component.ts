@@ -5,8 +5,8 @@ import { ChildCategory } from '../../core/interfaces/child-category/ChildCategor
 import { ChildCategoryResponse } from '../../core/interfaces/child-category/ChildCategoryResponse';
 import { ParentCategory } from '../../core/interfaces/parent-category/ParentCategory';
 import { ParentCategoryResponse } from '../../core/interfaces/parent-category/ParentCategoryResponse';
-import { ChildCategoryService } from '../../core/services/child-category.service';
-import { ParentCategoryService } from '../../core/services/parent-category.service';
+import { ParentCategoryService } from '../parentcategory/shared/services/parent-category.service';
+import { ChildCategoryService } from './shared/services/child-category.service';
 
 @Component({
   selector: 'app-childcategory',

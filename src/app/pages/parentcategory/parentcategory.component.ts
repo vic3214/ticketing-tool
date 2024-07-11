@@ -4,8 +4,8 @@ import { Department } from '../../core/interfaces/department/Department';
 import { DepartmentResponse } from '../../core/interfaces/department/DepartmentResponse';
 import { ParentCategory } from '../../core/interfaces/parent-category/ParentCategory';
 import { ParentCategoryResponse } from '../../core/interfaces/parent-category/ParentCategoryResponse';
-import { DepartmentService } from '../../core/services/department.service';
-import { ParentCategoryService } from '../../core/services/parent-category.service';
+import { DepartmentService } from '../department/shared/services/department.service';
+import { ParentCategoryService } from './shared/services/parent-category.service';
 
 @Component({
   selector: 'app-parentcategory',

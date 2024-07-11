@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { Employee } from '../interfaces/employee/Employee';
-import { EmployeeResponse } from '../interfaces/employee/EmployeeResponse';
-import { Role } from '../interfaces/role/Role';
-import { RoleResponse } from '../interfaces/role/RoleResponse';
+import { Employee } from '../../../../core/interfaces/employee/Employee';
+import { EmployeeResponse } from '../../../../core/interfaces/employee/EmployeeResponse';
+import { Role } from '../../../../core/interfaces/role/Role';
+import { RoleResponse } from '../../../../core/interfaces/role/RoleResponse';
 
 @Injectable({
   providedIn: 'root',
