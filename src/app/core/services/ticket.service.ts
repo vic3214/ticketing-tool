@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { TicektActionResponse } from '../interfaces/ticket-action/TicketActionResponse';
 import { Ticket } from '../interfaces/ticket/Ticket';
 import { TicketResponse } from '../interfaces/ticket/TicketResponse';
 import {
@@ -30,6 +31,20 @@ export class TicketService {
   getAssignedsTicketsToEmployee(employeeId: number) {
     return this.http.get<TicketAssignedInfoResponse>(
       `${this.apiUrl}GetAssignedTicketsByEmpId?empId=${employeeId}`
+    );
+  }
+
+  startTicket(ticketId: number) {
+    return this.http.post<TicektActionResponse>(
+      `${this.apiUrl}startTicket?id=${ticketId}`,
+      {}
+    );
+  }
+
+  closeTicket(ticketId: number) {
+    return this.http.post<TicektActionResponse>(
+      `${this.apiUrl}closeTicket?id=${ticketId}`,
+      {}
     );
   }
 }

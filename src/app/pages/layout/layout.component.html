@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark view-height">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="dashboard">Ticket_</a>
+    <!-- <a class="navbar-brand" routerLink="/dashboard">Ticket_</a> -->
     <button
       class="navbar-toggler"
       type="button"
@@ -11,32 +11,34 @@
     </button>
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
+        <!--         <li class="nav-item">
           <a class="nav-link active cursor-pointer" routerLink="dashboard"
             >Dashboard</a
           >
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link cursor-pointer" routerLink="/department"
-            >Department</a
+            >Departamento</a
           >
         </li>
         <li class="nav-item">
           <a class="nav-link cursor-pointer" routerLink="/parent-category"
-            >Parent Category</a
+            >Categorías</a
           >
         </li>
         <li class="nav-item">
           <a class="nav-link cursor-pointer" routerLink="/child-category"
-            >Child Category</a
+            >Subcategorías</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link cursor-pointer" routerLink="/employee">Employee</a>
+          <a class="nav-link cursor-pointer" routerLink="/employee"
+            >Empleados</a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link cursor-pointer" routerLink="/new-ticket"
-            >New Ticket</a
+            >Nuevo Ticket</a
           >
         </li>
         <li class="nav-item">
@@ -47,7 +49,7 @@
       </ul>
       <form class="d-flex">
         <button class="btn btn-primary" type="button" (click)="onLogOff()">
-          LogOff
+          Cerrar Sesión
         </button>
       </form>
     </div>

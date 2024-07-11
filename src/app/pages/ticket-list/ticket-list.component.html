@@ -73,6 +73,7 @@
           <th>Asignado a</th>
           <th>Categoría</th>
           <th>SubCategoría</th>
+          <th>Acción</th>
         </tr>
       </thead>
       <tbody>
@@ -87,6 +88,24 @@
           <td>{{ ticket.assignedToEmployee }}</td>
           <td>{{ ticket.parentCategoryName }}</td>
           <td>{{ ticket.childCategoryName }}</td>
+          <td>
+            @if (ticket.state===TicketState.Assigned) {
+
+            <button
+              class="btn btn-success"
+              (click)="changeState(TicketState.Start, ticket.ticketId)"
+            >
+              Empezar
+            </button>
+            }@else if (ticket.state===TicketState.InProgress) {
+            <button
+              class="btn btn-success"
+              (click)="changeState(TicketState.Close, ticket.ticketId)"
+            >
+              Cerrar
+            </button>
+            }
+          </td>
         </tr>
         }
       </tbody>

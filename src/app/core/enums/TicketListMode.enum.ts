@@ -1,4 +1,4 @@
 export enum TicketListMode {
-  MisTickets = '',
-  TicketsAsignados = 'Tickets Assignados',
+  MisTickets = 'Mis Tickets',
+  TicketsAsignados = 'Tickets Asignados',
 }
